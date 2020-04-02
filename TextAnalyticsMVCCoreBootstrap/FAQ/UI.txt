@@ -1,0 +1,12 @@
+﻿//asp core class container width
+https://stackoverflow.com/questions/42765076/bootstrap-with-asp-net-not-using-full-screen/42765138
+https://metanit.com/sharp/aspnet5/3.5.php
+https://forums.asp.net/t/2144277.aspx?how+to+increase+the+width+of+the+container+in+the+ASP+NET+MVC+Project
+
+
+//ToDo
+https://codepen.io/sitesplat/pen/QQmPKw
+https://codepen.io/sitesplat/pen/QQmPKw
+https://www.jqueryscript.net/other/Simple-Todo-List-Plugin-with-jQuery-jQuery-UI-Todolist.html
+https://www.jqueryscript.net/demo/Simple-Todo-List-Plugin-with-jQuery-jQuery-UI-Todolist/
+https://bbbootstrap.com/snippets/awesome-todo-list-template-25095891

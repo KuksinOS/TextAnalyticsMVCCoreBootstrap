@@ -6,3 +6,109 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<!-- Stack the columns on mobile by making one full-width and the other half-width -->
+<div class="row">
+    <div class="col-12 col-md-4">
+        <div class="main container rounded p-3 mt-3">
+            <h4 class="card-title">Метрики</h4>
+            <form class="form-group mb-5">
+                <div class="add-items  d-flex">
+                    <input type="text" id="input" class="form-control" placeholder="Определите метрику">
+                    <button class="add btn btn-primary font-weight-bold">Добавить</button>
+                </div>
+            </form>
+
+
+            <div class="cards">
+                <div class="card">
+                    <div class="card-block">
+                        <button id="delete" type="button" class="btn btn-link float-right">❌</button>
+                        <button id="done" type="button" class="btn btn-link float-right mr-3">✔️</button>
+                        <p class="card-title lead">Test1</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-block">
+                        <button id="delete" type="button" class="btn btn-link float-right">❌</button>
+                        <button id="done" type="button" class="btn btn-link float-right mr-3">✔️</button>
+                        <del><p class="card-title lead">Test2</p></del>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+</div>
+
+@section scripts {
+   
+   
+    <script>
+
+        $(document).ready(function () {
+         //   alert('a');
+         });
+
+// Remove the default cards if cards are present in the localStorage object
+if (localStorage.cards) {
+    $('.cards').children().remove();
+    $('.cards').append(JSON.parse(localStorage.getItem('cards')));
+}
+
+// Delete the existing cards and add the new cards
+// Simpler than pushing/splicing an array
+const setStorage = () => {
+    localStorage.removeItem('cards');
+    localStorage.setItem('cards', JSON.stringify($('.cards').html()));
+};
+
+// Wrap or unwrap the card title in del tags for a strikeout effect
+        $('.cards').on('click', '#done', () => {
+    debugger
+  if ($(event.target).next().is($('del'))) {
+    $(event.target).next().children().unwrap();
+    setStorage();
+  } else {
+    $(event.target).next().wrap('<del></del>');
+    setStorage();
+  }
+});
+
+// Delete the selected card and update localStorage
+        $('.cards').on('click', '#delete', () => {
+    debugger
+  $(event.target).offsetParent().remove();
+  setStorage();
+});
+
+// Append new card on submit and update localStorage
+$('form').on('submit', (event) => {
+    event.preventDefault();
+    const title = $('input').val();
+    
+    if (title) {
+        const card = `
+    <div class="card">
+      <div class="card-block">
+        <button id="done" type="button" class="btn btn-link float-right">❌</button>
+        <button id="delete" type="button" class="btn btn-link float-right mr-3">✔️</button>
+        <p class="card-title lead">${title}</p>
+      </div>
+    </div>
+  `;
+        $('.cards').append(card);
+        // Reset the form input field
+        $('form').trigger('reset');
+        setStorage();
+    }    
+});
+    </script>
+}
+
+
+
+
+

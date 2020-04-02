@@ -1,0 +1,23 @@
+﻿// in @RenderBody() Uncaught ReferenceError: $ is not defined
+https://stackoverflow.com/questions/18860508/why-jquery-doesnt-work-on-a-page-defined-in-layout
+https://stackoverflow.com/questions/34994653/mvc-jquery-is-not-defined
+https://forums.asp.net/t/2116417.aspx?ASP+NET+MVC+Uncaught+ReferenceError+when+trying+to+render+with+Section+Scripts
+
+This should be near the bottom of _Layout.cshtml:
+
+@Scripts.Render("~/bundles/jquery")
+@RenderSection("scripts", required: false)
+This should be in your child view:
+
+@section scripts {
+    @Scripts.Render("~/scripts/jquery.infinitescroll.js") // Or some other script
+}
+All your scripts (that reference jquery) in your child views need to be in the scripts section, not placed in the body of the page. That includes any script tags that want to make use of jquery as well. For example, one of my pages has the following:
+
+@section scripts {
+    @Scripts.Render("https://maps.googleapis.com/maps/api/js?key=&sensor=false")
+    <script src="~/scripts/google-maps-3-vs-1-0.js"></script>
+    <script>
+        Stuff here
+    </script>
+}
