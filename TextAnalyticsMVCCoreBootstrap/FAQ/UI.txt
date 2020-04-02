@@ -1,4 +1,8 @@
-﻿//asp core class container width
+﻿https://www.tutorialspoint.com/html/mime_media_types.htm
+https://www.w3schools.com/tags/att_video_controls.asp
+https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_template2
+https://www.w3schools.com/tags/tag_template.asp
+//asp core class container width
 https://stackoverflow.com/questions/42765076/bootstrap-with-asp-net-not-using-full-screen/42765138
 https://metanit.com/sharp/aspnet5/3.5.php
 https://forums.asp.net/t/2144277.aspx?how+to+increase+the+width+of+the+container+in+the+ASP+NET+MVC+Project
@@ -10,3 +14,68 @@ https://codepen.io/sitesplat/pen/QQmPKw
 https://www.jqueryscript.net/other/Simple-Todo-List-Plugin-with-jQuery-jQuery-UI-Todolist.html
 https://www.jqueryscript.net/demo/Simple-Todo-List-Plugin-with-jQuery-jQuery-UI-Todolist/
 https://bbbootstrap.com/snippets/awesome-todo-list-template-25095891
+
+
+//bootstrap
+//navbar button right bootstrap 4
+https://stackoverflow.com/questions/19733447/bootstrap-navbar-with-left-center-or-right-aligned-items/20362024#20362024
+https://getbootstrap.com/docs/4.0/components/navbar/
+https://getbootstrap.com/docs/4.0/components/navbar/
+https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp
+https://stackoverflow.com/questions/19733447/bootstrap-navbar-with-left-center-or-right-aligned-items
+http://jsfiddle.net/xQgSm/
+https://css-tricks.com/almanac/properties/f/float/
+https://stackoverflow.com/questions/19733447/bootstrap-navbar-with-left-center-or-right-aligned-items
+https://www.w3schools.com/bootstrap/bootstrap_navbar.asp
+
+<div style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: gray;height:30px;">
+   <div style="float:left;line-height:30px;">Contact Details</div>
+
+    <button type="button" class="edit_button" style="float: right;">My Button</button>
+
+</div>
+
+//////////////////////////////////////////////////////////
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>    
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><a href="#">Left</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-center">
+        <li><a href="#">Center</a></li>
+        <li><a href="#">Center</a></li>
+      <li><a href="#">Center</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Right</a></li>
+    </ul>
+  </div>
+</nav>
+
+@media (min-width: 768px) {
+  .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+}
+
+//form
+https://getbootstrap.com/docs/4.0/components/forms/
+
+//textarea
+https://www.jquery-az.com/2-demos-of-textarea-in-bootstrap-forms/
+https://getbootstrap.com/docs/4.0/components/input-group/
+https://www.w3schools.com/tags/tag_textarea.asp
+https://stackoverflow.com/questions/35188924/reading-txt-file-into-a-textarea-using-javascript
+
+//alerts
+https://getbootstrap.com/docs/4.0/components/alerts/
