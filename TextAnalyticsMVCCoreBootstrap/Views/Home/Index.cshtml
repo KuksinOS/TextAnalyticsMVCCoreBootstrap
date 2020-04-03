@@ -12,7 +12,7 @@
     <div class="col-12 col-md-4">
         <div class="main container rounded p-3">
             <h4 class="card-title">Метрики</h4>
-            <form class="form-group mb-5">
+            <form class="form-group mb-5" onsubmit="AddMetric(this, event);return false;">
                 <div class="add-items  d-flex">
                     <input type="text" id="metric" class="form-control" placeholder="Определите метрику">
                     <button class="add btn btn-primary font-weight-bold">Добавить</button>
@@ -21,18 +21,7 @@
 
 
             <div class="cards">
-                @*<div class="card">
-                        <div class="card-block">
-                            <button id="delete" type="button" class="btn btn-link float-right">❌</button>
-                            <p class="card-title lead">Test1</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-block">
-                            <button id="delete" type="button" class="btn btn-link float-right">❌</button>
-                            <del><p class="card-title lead">Test2</p></del>
-                        </div>
-                    </div>*@
+
             </div>
 
         </div>
@@ -43,15 +32,18 @@
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item" style="margin:10px;">
-                    <input name="file" type="file" id="files" class="form-control" style="height:unset;" value="">
+                    <input name="uploadedFile" type="file" id="uploadedFile" class="form-control" style="height:unset;" value="">
                 </li>
-                <li class="nav-item" style="margin:10px;">                    
+                <li class="nav-item" style="margin:10px;">
                     <div class="alert alert-dark" role="alert">
                         <p id="demo">Имя файла:<br>Размер файла: bytes <br></p>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="home">Вывести статистику</a>
+                    <form asp-action="AddFile" asp-controller="Home" method="post" enctype="multipart/form-data">
+                        <input name="uploadedFile1" type="file" id="uploadedFile1" value="" visbility="hidden" style="display:none">
+                        <input type="submit" value="Загрузить на сервер" />
+                    </form>
                 </li>
             </ul>
         </nav>
@@ -66,8 +58,8 @@
         </div>
 
     </div>
-
     <button type="submit" class="btn btn-info">Submit Information</button>
+
 </div>
 
 
@@ -107,16 +99,16 @@
         });
 
         // Append new card on submit and update localStorage
-        $('form').on('submit', (event) => {
+        function AddMetric(form, event) {
             event.preventDefault();
-            const title = $('metric').val();
+            const metric = form.elements["metric"].value;
 
-            if (title) {
+            if (metric) {
                 const card = `
                 <div class="card">
                   <div class="card-block">
                     <button id="delete" type="button" class="btn btn-link float-right">❌</button>
-                    <p class="card-title lead">${title}</p>
+                    <p class="card-title lead">${metric}</p>
                   </div>
                 </div>
               `;
@@ -125,7 +117,7 @@
                 $('form').trigger('reset');
                 setStorage();
             }
-        });
+        };
 
 
         function readTextFile(file, callback, encoding) {
@@ -159,7 +151,11 @@
             }
         }
 
-        $('#files').on('change', function () {
+        $('#uploadedFile').on('change', function () {
+            debugger
+            let uploadedFile1 = document.getElementById('uploadedFile1');
+            uploadedFile1.files = this.files;
+
             fileChosen(this, document.getElementById('infotext'));
         });
 

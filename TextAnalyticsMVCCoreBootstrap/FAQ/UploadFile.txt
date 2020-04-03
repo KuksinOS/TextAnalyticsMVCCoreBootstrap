@@ -1,7 +1,13 @@
-﻿//server
+﻿https://habr.com/ru/post/321250/
+
+//server
 https://metanit.com/sharp/aspnet5/21.3.php
+https://metanit.com/sharp/articles/26.php
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.1
 https://www.c-sharpcorner.com/article/upload-download-files-in-asp-net-core-2-0/
+https://www.c-sharpcorner.com/article/upload-files-in-asp-net-mvc-5/
+https://stackoverflow.com/questions/1696877/how-to-set-a-value-to-a-file-input-in-html
+
 
 //client
 https://stackoverflow.com/questions/35188924/reading-txt-file-into-a-textarea-using-javascript
@@ -9,6 +15,10 @@ https://developer.mozilla.org/ru/docs/Web/API/File/Using_files_from_web_applicat
 https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_fileupload_files
 https://www.w3schools.com/jsref/prop_fileupload_files.asp
 https://www.geeksforgeeks.org/javascript-program-to-write-data-in-a-text-file/
+
+https://stackoverflow.com/questions/47515232/how-to-set-file-input-value-when-dropping-file-on-page?noredirect=1&lq=1
+
+
 
 function readTextFile(file, callback, encoding) {
     var reader = new FileReader();
@@ -36,3 +46,36 @@ $('#files').on('change', function () {
 <textarea id="recipients" name="recipients" class="form-control"></textarea>
 <input name="file" type="file" id="files" class="form-control" value="">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+
+https://stackoverflow.com/questions/1696877/how-to-set-a-value-to-a-file-input-in-html
+<form name="foo" method="post" enctype="multipart/form-data">
+    <input type="file" value="c:/passwords.txt">
+</form>
+<script>document.foo.submit();</script>
+
+
+
+function uploadFile (data) {
+        // define data and connections
+    var blob = new Blob([JSON.stringify(data)]);
+    var url = URL.createObjectURL(blob);
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'myForm.php', true);
+
+        // define new form
+    var formData = new FormData();
+    formData.append('someUploadIdentifier', blob, 'someFileName.json');
+
+        // action after uploading happens
+    xhr.onload = function(e) {
+        console.log("File uploading completed!");
+    };
+
+        // do the uploading
+    console.log("File uploading started!");
+    xhr.send(formData);
+}
+
+    // This data/text below is local to the JS script, so we are allowed to send it!
+uploadFile({'hello!':'how are you?'});
