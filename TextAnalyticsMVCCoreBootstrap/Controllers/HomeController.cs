@@ -22,19 +22,16 @@ namespace TextAnalyticsMVCCoreBootstrap.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        //public IActionResult Index()
-        //{           
-        //    return View();
-        //}
-        public IActionResult Index(string fileName)
-        {
-            ViewBag.FileName = fileName;
+        public IActionResult Index()
+        {           
             return View();
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> AddFile(IFormFile uploadedFile1)
+        public async Task<IActionResult> AddFile(IList<IFormFile> files)
         {
+            var uploadedFile1 = files[0];
             if (uploadedFile1 != null)
             {
                 // путь к папке Files
@@ -47,8 +44,8 @@ namespace TextAnalyticsMVCCoreBootstrap.Controllers
                 FileModel file = new FileModel { Name = uploadedFile1.FileName, Path = path };
                 
             }
-            
-            return RedirectToAction("Index", new { @fileName = uploadedFile1.FileName });
+
+            return Ok();
         }
 
         public IActionResult Privacy()

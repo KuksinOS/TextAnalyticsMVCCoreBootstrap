@@ -7,7 +7,8 @@ https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnet
 https://www.c-sharpcorner.com/article/upload-download-files-in-asp-net-core-2-0/
 https://www.c-sharpcorner.com/article/upload-files-in-asp-net-mvc-5/
 https://stackoverflow.com/questions/1696877/how-to-set-a-value-to-a-file-input-in-html
-
+//javascript
+https://stackoverflow.com/questions/46903310/uploading-file-using-ajax-in-asp-net-core
 
 //client
 https://stackoverflow.com/questions/35188924/reading-txt-file-into-a-textarea-using-javascript
@@ -79,3 +80,35 @@ function uploadFile (data) {
 
     // This data/text below is local to the JS script, so we are allowed to send it!
 uploadFile({'hello!':'how are you?'});
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+ <form asp-action="AddFile" asp-controller="Home" method="post" enctype="multipart/form-data">
+                        <input name="uploadedFile1" type="file" id="uploadedFile1" value="" visbility="hidden" style="display:none">
+                        <input type="submit" value="Загрузить на сервер" />
+ </form>
+
+         public IActionResult Index(string fileName)
+        {
+            ViewBag.FileName = fileName;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddFile(IFormFile uploadedFile1)
+        {
+            if (uploadedFile1 != null)
+            {
+                // путь к папке Files
+                string path = "/Files/" + uploadedFile1.FileName;
+                // сохраняем файл в папку Files в каталоге wwwroot
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await uploadedFile1.CopyToAsync(fileStream);
+                }
+                FileModel file = new FileModel { Name = uploadedFile1.FileName, Path = path };
+                
+            }
+            
+            return RedirectToAction("Index", new { @fileName = uploadedFile1.FileName });
+        }

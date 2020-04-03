@@ -40,7 +40,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <form asp-action="AddFile" asp-controller="Home" method="post" enctype="multipart/form-data">
+                    <form onsubmit="SaveFile(this, event);return false;">
                         <input name="uploadedFile1" type="file" id="uploadedFile1" value="" visbility="hidden" style="display:none">
                         <input type="submit" value="Загрузить на сервер" />
                     </form>
@@ -119,6 +119,30 @@
             }
         };
 
+        // Save File on server
+        function SaveFile(form, event) {
+            debugger
+            event.preventDefault();
+            const inputfile = form.elements["uploadedFile1"];
+
+            if (inputfile.files && inputfile.files[0]) {
+                var formData = new FormData();
+                formData.append("files", inputfile.files[0]);
+
+                $.ajax(
+                    {
+                        url: "/Home/AddFile",  
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        type: "POST",
+                        success: function (data) {
+                            alert("Files Uploaded!");
+                        }
+                    });
+            }
+        };
+
 
         function readTextFile(file, callback, encoding) {
             var reader = new FileReader();
@@ -129,21 +153,21 @@
             else reader.readAsText(file);
         }
 
-        function fileChosen(input, output) {
-            if (input.files && input.files[0]) {
+        function fileChosen(inputfile, output) {
+            if (inputfile.files && inputfile.files[0]) {
                 let txt = "";
 
-                 if ('name' in input.files[0]) {
-                 txt += "Имя файла: " + input.files[0].name + "<br>";
+                 if ('name' in inputfile.files[0]) {
+                 txt += "Имя файла: " + inputfile.files[0].name + "<br>";
                  }
 
-                 if ('size' in input.files[0]) {
-                 txt += "Размер файла: " + input.files[0].size + " bytes <br>";
+                 if ('size' in inputfile.files[0]) {
+                 txt += "Размер файла: " + inputfile.files[0].size + " bytes <br>";
                  }
                 document.getElementById("demo").innerHTML = txt;
 
                 readTextFile(
-                    input.files[0],
+                    inputfile.files[0],
                     function (str) {
                         output.value = str;
                     }
