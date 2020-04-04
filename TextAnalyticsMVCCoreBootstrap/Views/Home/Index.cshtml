@@ -8,9 +8,9 @@
 </div>
 
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-<div class="row">
+<div class="row" style="margin-bottom:5px;">
     <div class="col-12 col-md-4">
-        <div class="main container rounded p-3">
+        <div class="main container rounded p-3" style="background:#adb5bd;">
             <h4 class="card-title">Метрики</h4>
             <form class="form-group mb-5" onsubmit="AddMetric(this, event);return false;">
                 <div class="add-items  d-flex">
@@ -29,24 +29,27 @@
     </div>
     <div class="col-12 col-md-8">
 
-        <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <nav class="navbar navbar-expand-sm navbar-dark" style="background:#adb5bd;">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item" style="margin:10px;">
-                    <input name="uploadedFile" type="file" id="uploadedFile" class="form-control" style="height:unset;" value="">
-                </li>
-                <li class="nav-item" style="margin:10px;">
-                    <div class="alert alert-dark" role="alert">
-                        <p id="demo">Имя файла:<br>Размер файла: bytes <br></p>
-                    </div>
+                <li class="nav-item" style="margin-right:10px;">
+                    <label class="btn btn-primary" style="width:200px;cursor:pointer;">
+                        <input name="uploadedFile" id="uploadedFile" type="file" style="display:none" value="">
+                        Відобразити файл
+                    </label>
                 </li>
                 <li class="nav-item">
                     <form onsubmit="SaveFile(this, event);return false;">
                         <input name="uploadedFile1" type="file" id="uploadedFile1" value="" visbility="hidden" style="display:none">
-                        <input type="submit" value="Загрузить на сервер" />
+                        <input type="submit" class="btn btn-primary" style="width:200px;" value="Загрузить на сервер" />
                     </form>
                 </li>
             </ul>
         </nav>
+
+        <div class="alert alert-dark" role="alert">
+            <p id="demo">Имя файла:<br>Размер файла: bytes <br></p>
+        </div>
+
 
         <h5>Загруженный текст</h5>
 
@@ -58,8 +61,32 @@
         </div>
 
     </div>
-    <button type="submit" class="btn btn-info">Submit Information</button>
 
+</div>
+
+<div class="row">
+    <h5 class='mx-auto'>Анализ текста</h5>
+    <div class="col-md-12">
+        <nav class="navbar navbar-expand-sm navbar-dark" style="background:#adb5bd;">
+            <ul class="navbar-nav">
+                <li class="nav-item" style="margin-right:10px;margin-bottom:0.5rem;">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" style="min-width:310px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Выбрать Тип анализа
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Самый частый символ</a>
+                            <a class="dropdown-item" href="#">Количество восклицательных предложений</a>
+                            <a class="dropdown-item" href="#">Процент существительных слов в тексте</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" style="margin-right:10px;">
+                    <button type="submit" class="btn btn-info" style="width:310px;">Отобразить статистику</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 
@@ -67,12 +94,10 @@
 
 
 
+    @section scripts {
 
 
-@section scripts {
-
-
-    <script>
+        <script>
 
         $(document).ready(function () {
             //   alert('a');
@@ -128,10 +153,10 @@
             if (inputfile.files && inputfile.files[0]) {
                 var formData = new FormData();
                 formData.append("files", inputfile.files[0]);
-
+               // var _url = '@Url.Action("AddFile", "Home")';
                 $.ajax(
                     {
-                        url: "/Home/AddFile",  
+                        url: "/Home/AddFile",
                         data: formData,
                         processData: false,
                         contentType: false,
@@ -183,10 +208,12 @@
             fileChosen(this, document.getElementById('infotext'));
         });
 
+         $(".dropdown-menu a ").click(function(){
+           $(this).parents(".dropdown").find('.btn').text($(this).text());
+         });
 
-
-    </script>
-}
+        </script>
+    }
 
 
 

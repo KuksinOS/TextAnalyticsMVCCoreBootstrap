@@ -79,3 +79,54 @@ https://stackoverflow.com/questions/35188924/reading-txt-file-into-a-textarea-us
 
 //alerts
 https://getbootstrap.com/docs/4.0/components/alerts/
+
+
+//bootstrap dropdown select
+https://stackoverflow.com/questions/50938283/how-display-selected-item-from-bootstrap-4-drop-down-item-menu
+https://stackoverflow.com/questions/47828448/bootstrap-4-buttons-with-dropdowns-selected-value-not-display
+
+                    <div class="dropdown">
+                        <div class="input-group justify-content-center">
+                            <div class="input-group-btn">
+                                <button class="btn btn-info btn-md dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #588c7e;">
+                                    Eye Color
+
+                                </button>
+
+                                <div class="dropdown-menu" onchange="selectMenu1" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#" data="brown"><img src="img/brown_eye.jpg" class="rounded-circle"> Brown</a>
+                                    <a class="dropdown-item" href="#" data="blue"><img src="img/blue_eye.jpg" class="rounded-circle"> Blue</a>
+                                    <a class="dropdown-item" href="#" data="green"><img src="img/green_eye.jpg" class="rounded-circle"> Green</a>
+                                    <a class="dropdown-item" href="#" data="hazel"><img src="img/hazel_eye.jpg" class="rounded-circle"> Hazel</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	$('.dropdown-menu a').on('click', function(){    
+    $('.dropdown-toggle').html($(this).html());    
+})
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Currency
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">USD</a>
+          <a class="dropdown-item" href="#">AUS</a>
+       
+        </div>
+      </div>
+      <input type="text" class="form-control" aria-label="Text input with dropdown button">
+    </div>
+  </div>
+ 
+</div>

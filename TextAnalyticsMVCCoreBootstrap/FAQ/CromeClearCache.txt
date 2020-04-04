@@ -1,0 +1,46 @@
+﻿https://superuser.com/questions/220179/how-can-i-do-a-cache-refresh-in-google-chrome
+
+
+
+Push F12 or Ctrl+Shift+J to "Open Developer Tools" on Windows (On Mac: Cmd+Opt+I) then you can right click on the refresh icon and select 'Empty Cache and Hard Reload'
+
+See: https://stackoverflow.com/questions/12633425/chrome-browser-reload-options-new-feature
+
+The documentation says:
+
+For Windows and Linux: Shift+F5 or Ctrl+Shift+R
+(screenshot): enter image description here
+For Mac: Cmd+Shft+R):
+Reloads your current page, ignoring cached content.
+
+Although some have reported this works, others have said it does not work correctly
+
+Your other options are:
+
+JavaScript Console
+
+The JavaScript Console is available in two modes within Chrome DevTools: the primary Console tab, or as a split-view you can display while on another tab (such as Elements or Sources).
+
+To open the Console tab, do one of the following:
+
+Use the keyboard shortcut Command - Option - J (Mac) or Control -Shift -J (Windows/Linux). Select View > Developer > JavaScript Console.
+
+F12 doesn't appear to be mentioned here but will open this console on Windows as well.
+
+Chrome Developer Tools
+
+Using the JavaScript Console
+
+Incognito window
+
+Another interesting option is to open a new incognito window (Ctrl+Shift+N On Mac: ⌘ + Shift + N.). This window won't use any stored cookies, cached content, or DNS resolutions, so you can test stuff in it without slowing your normal browsing down by dumping the cache. This is what I almost always do instead of clearing the cache. https://support.google.com/chrome/answer/95464
+
+Disable cache
+
+Open Chrome Developer Tools (F12, Mac: ⌘+⌥+I). Click the settings icon (a gear in the bottom right corner). Check "Disable cache". Now when you browse with your Developer tools open caching is disabled.
+
+Click&Clean
+
+Finally there is also the option of the Click&Clean extension
+
+Ctrl+Shift+F5 seems to work for me.
