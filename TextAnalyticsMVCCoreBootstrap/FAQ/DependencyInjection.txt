@@ -1,0 +1,5 @@
+﻿https://metanit.com/sharp/aspnet5/6.2.php
+https://metanit.com/sharp/aspnet5/6.4.php
+
+
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1

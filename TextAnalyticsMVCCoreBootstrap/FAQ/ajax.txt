@@ -1,4 +1,5 @@
-﻿https://www.c-sharpcorner.com/blogs/post-the-data-to-asp-net-mvc-controller-using-jquery-ajax
+﻿https://www.w3schools.com/js/js_type_conversion.asp
+https://www.c-sharpcorner.com/blogs/post-the-data-to-asp-net-mvc-controller-using-jquery-ajax
 https://stackoverflow.com/questions/46903310/uploading-file-using-ajax-in-asp-net-core
 
 var _url = '@Url.Action("UploadFile", "MyController")';
@@ -66,3 +67,6 @@ private string GetPathAndFilename(string filename)
 {
   return this.hostingEnvironment.WebRootPath + "\\uploads\\" + filename;
 }
+https://stackoverflow.com/questions/27612372/how-to-await-the-ajax-request
+https://medium.com/a-layman/how-to-return-the-response-of-ajax-asynchronous-call-compare-promise-async-await-fetch-a0ca971ba7ae
+

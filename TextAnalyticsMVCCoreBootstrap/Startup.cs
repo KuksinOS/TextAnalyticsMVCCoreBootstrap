@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TextAnalyticsMVCCoreBootstrap.MostFrequentChars;
+using TextAnalyticsMVCCoreBootstrap.Services;
 
 namespace TextAnalyticsMVCCoreBootstrap
 {
@@ -23,6 +25,8 @@ namespace TextAnalyticsMVCCoreBootstrap
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            //Dependency injection
+            //services.AddTransient<Analytic>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,11 @@
+﻿//add my attribute in html tag
+https://www.w3schools.com/xml/xml_dtd_attributes.asp
+https://www.w3schools.com/xml/xml_dtd_attributes.asp
+https://stackoverflow.com/questions/1735230/can-i-add-a-custom-attribute-to-an-html-tag
+https://books.google.com.ua/books?id=CYwYMmqHrQgC&pg=PA100&lpg=PA100&dq=DTD+-+Attributes+asp+core&source=bl&ots=y0j5vhJhP3&sig=ACfU3U28sWedMQc-lNNdiwlsgJH6Ahpfjg&hl=ru&sa=X&ved=2ahUKEwjY_KClgtHoAhUbi8MKHd-qAs8Q6AEwCXoECA0QLw#v=onepage&q=DTD%20-%20Attributes%20asp%20core&f=false
+https://www.tutorialspoint.com/ru/dtd/dtd_attributes.htm
+
+//set get value
+https://www.w3schools.com/jquery/html_attr.asp
+
+

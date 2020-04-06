@@ -1,0 +1,5 @@
+﻿https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-3.1
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-javascript?view=aspnetcore-3.1
+https://jonhilton.net/different-js-scripts-for-different-asp-net-core-environments/
+
+https://metanit.com/sharp/aspnet5/10.3.php

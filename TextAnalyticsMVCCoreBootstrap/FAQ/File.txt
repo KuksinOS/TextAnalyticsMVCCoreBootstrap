@@ -1,0 +1,26 @@
+﻿https://stackoverflow.com/questions/35842547/read-solution-data-files-asp-net-core
+
+
+
+using Microsoft.AspNetCore.Hosting;
+....
+
+public class HomeController: Controller
+{
+   private IHostingEnvironment _env;
+
+   public HomeController(IHostingEnvironment env)
+   {
+   _env = env;
+   }   
+...
+Then you can get the wwwroot location in your actions: _env.WebRootPath
+
+var owners =   System.IO.File.ReadAllLines(System.IO.Path.Combine(_env.WebRootPath,"File.txt"));
+
+
+//File Exists
+https://docs.microsoft.com/en-us/dotnet/api/system.io.file.readalltext?view=netframework-4.8
+
+//buffer
+https://docs.microsoft.com/en-us/dotnet/api/system.io.fileinfo.exists?view=netframework-4.8
