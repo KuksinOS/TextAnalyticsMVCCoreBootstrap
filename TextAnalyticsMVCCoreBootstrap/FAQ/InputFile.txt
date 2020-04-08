@@ -21,3 +21,8 @@ Solution for including the filename:
 </label>
 <span class='label label-info' id="upload-file-info"></span>
 The solution above requires jQuery.
+
+https://professorweb.ru/my/csharp/thread_and_files/level3/3_9.php
+https://www.tutorialsteacher.com/csharp/csharp-stream-io
+https://www.cyberforum.ru/csharp-net/thread1385732.html
+

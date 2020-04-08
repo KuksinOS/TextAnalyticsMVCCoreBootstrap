@@ -33,6 +33,40 @@
         
     };
 
+    var detectLanguage = function (fileName) {
+        return new Promise(function (resolve, reject) {
+            // alert(fileName);
+            $.ajax({
+                type: "POST",
+                url: "/Home/DetectLanguage",
+                data: '"' + fileName + '"',
+                //data: JSON.stringify(phonemobile),
+                //data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: (data) => {
+                    resolve(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    //debugger;
+                    if (XMLHttpRequest.status == 404) {
+                        alert('404');
+                        reject(err);
+                    }
+
+                    else {
+                        alert(errorThrown + "Not Found? " + XMLHttpRequest);
+                        reject(err);
+                    }
+                }
+            });
+
+        });
+
+    };
+
+
     return {
         GetAnalytics: function (keyanalytic, fileName) {
             let result;
@@ -41,7 +75,7 @@
                     result = mostFrequentChar(fileName);
                     break;
                 case "2":
-                    result = "";
+                    result = detectLanguage(fileName);
                     break;
                 case "3":
                     result = "";

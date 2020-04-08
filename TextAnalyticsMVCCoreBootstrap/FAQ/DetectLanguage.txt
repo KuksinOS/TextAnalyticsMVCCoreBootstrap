@@ -1,0 +1,98 @@
+﻿1. Install NuGet Google.Cloud.Language.V1 (using Google.Cloud.Translation.V2;)
+class DetectLanguage:
+https://stackoverflow.com/questions/45165100/asp-c-sharp-application-default-credentials-are-not-available
+
+https://googleapis.github.io/google-cloud-dotnet/docs/Google.Cloud.Language.V1/
+get credentials
+var client = LanguageServiceClient.Create();
+//"The Application Default Credentials are not available. They are available if running in Google Compute Engine. Otherwise, the environment variable GOOGLE_APPLICATION_CREDENTIALS must be defined pointing to a file defining the credentials. See https://developers.google.com/accounts/docs/application-default-credentials for more information."
+https://stackoverflow.com/questions/45165100/asp-c-sharp-application-default-credentials-are-not-available
+https://console.cloud.google.com/apis/credentials?_ga=1.53096040.1951524703.1498677736&pli=1&project=portal-97fd2&folder=&organizationId=
+
+client.AnalyzeSentiment(document);
+//Message	"Status(StatusCode=PermissionDenied, Detail=\"Cloud Natural Language API has not been used in project 816312942778 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/language.googleapis.com/overview?project=816312942778 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.\")"	string
+https://console.developers.google.com/apis/library/language.googleapis.com?project=portal-97fd2&pli=1
+Требует оплату
+https://developers.google.com/apis-explorer/?hl=ru#p/language/v1/
+https://cloud.google.com/natural-language/docs/reference/rest/v1beta2/documents/analyzeEntitySentiment
+https://github.com/googleapis/google-cloud-php/blob/master/Language/src/LanguageClient.php
+https://cloud.google.com/natural-language/docs/reference/rest/v1/documents/analyzeEntitySentiment
+https://stackoverflow.com/questions/48433857/ajax-post-request-to-google-nlp
+
+UPDATE: A colleague has pointed me to the MISTAKE I was making. We have to use JSON.stringify() in order to send the request. The code should be like this:
+
+$.ajax({
+    type        : "POST",
+    url         : "https://language.googleapis.com/v1/documents:analyzeEntitySentiment?key=YOUR-API-KEY", 
+    contentType : "application/json; charset=utf-8",
+    data        : 
+                    JSON.stringify({
+                        "document": {
+                            "type": "PLAIN_TEXT",
+                            "language": "en",
+                            "content": "Hola Victor"
+
+                        },
+                        "encodingType": "UTF8"}),
+    success     : function(_result){ 
+
+        if (_result) { 
+            alert('SUCCESS');
+        } else {
+            alert('ERROR');
+        }
+    },
+
+    error       : function(_result){
+
+    }
+});
+
+
+2.using Regex
+
+
+https://codelabs.developers.google.com/codelabs/cloud-translation-csharp/index.html?index=..%2F..index#7
+http://www.nullskull.com/q/10351133/how-to-use-google-api-to-detech-the-text-language.aspx
+https://translatepress.com/docs/automatic-translation/generate-google-api-key/#apiservices
+http://www.nullskull.com/q/10361231/how-to-detect-language-of-given-text.aspx
+
+https://stackoverflow.com/questions/27986586/detect-language-of-string-from-google-api-c-sharp
+https://www.dotnetperls.com/regex
+https://stackoverflow.com/questions/2266088/how-do-i-verify-that-a-string-is-in-english
+https://stackoverflow.com/questions/1192768/how-to-detect-the-language-of-a-string
+
+
+
+
+
+https://github.com/pdonald/language-detection
+Nu Get Install -> NUnit
+sentiment labelled sentences.zip
+Use
+using LanguageDetection;
+Load all supported languages
+
+LanguageDetector detector = new LanguageDetector();
+detector.AddAllLanguages();
+Assert.AreEqual("lv", detector.Detect("čau, man iet labi, un kā iet tev?"));
+or a small subset
+
+LanguageDetector detector = new LanguageDetector();
+detector.AddLanguages("lv", "lt", "en");
+Assert.AreEqual("lv", detector.Detect("čau, man iet labi, un kā iet tev?"));
+You can also change parameters
+
+LanguageDetector detector = new LanguageDetector();
+detector.RandomSeed = 1;
+detector.ConvergenceThreshold = 0.9;
+detector.MaxIterations = 50;
+License
+Apache 2.0
+
+
+https://phpclub.ru/talk/threads/%D0%9A%D0%B0%D0%BA-%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D1%8C-%D1%8F%D0%B7%D1%8B%D0%BA-%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%B0-%D0%B2-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9.10715/
+https://phpclub.ru/talk/threads/%D0%9A%D0%B0%D0%BA-%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D1%8C-%D1%8F%D0%B7%D1%8B%D0%BA-%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%B0-%D0%B2-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9.10715/
+
+https://habr.com/ru/post/27378/
+

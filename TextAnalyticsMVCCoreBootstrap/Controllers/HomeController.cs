@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TextAnalyticsMVCCoreBootstrap.Algoritm;
 using TextAnalyticsMVCCoreBootstrap.Models;
 using TextAnalyticsMVCCoreBootstrap.MostFrequentChars;
 using TextAnalyticsMVCCoreBootstrap.Services;
@@ -80,7 +81,37 @@ namespace TextAnalyticsMVCCoreBootstrap.Controllers
             return Ok(result);
         }
 
-      
+        [HttpPost]
+        public async Task<IActionResult> DetectLanguage([FromBody]string fileName)
+        {
+            // путь к папке Files
+            var file = System.IO.Path.Combine(_appEnvironment.WebRootPath, "Files", fileName);
+
+            if (!System.IO.File.Exists(file))
+            {
+                // Create a file to write to.
+                //string createText = "File not found";
+                return NotFound();
+            }
+            string text = System.IO.File.ReadAllText(file);
+            if (text == null)
+            {
+                // Create a file to write to.
+                //string createText = "File not found";
+                return NotFound();
+            }
+
+            var algoritm = new DetectLanguage<AnswerModel<string>>();
+            Analytic<AnswerModel<string>> _analytic = new Analytic<AnswerModel<string>>();
+
+            var result = _analytic.Execute(algoritm, text);
+
+            return Ok(result);
+        }
+
+
+
+
         public IActionResult Privacy()
         {
             return View();
